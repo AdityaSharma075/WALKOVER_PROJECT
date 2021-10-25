@@ -1,12 +1,14 @@
 const express = require('express');
+// const MongoStore = require('connect-mongo');
+const db = require('./config/mongoose');
 
 const app = express();
 
-const port = 3000;
+const port = 8000;
 
 
 
-
+app.use('/' , require('./routes'));
 
 
 
