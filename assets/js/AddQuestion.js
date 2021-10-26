@@ -1,7 +1,10 @@
 {
     let addQuestion = function(){
         let addform = $('#add-form');
+        let alladdform = $('*#add-form');
+        alladdform.hide();
         let btn = $("#add-btn");
+        let addbtn = $('#display-add-form-btn');
         btn.click(function(e){
             e.preventDefault();
 
@@ -20,6 +23,19 @@
             })
         })
 
+        addbtn.click(function(e){
+            
+            e.stopPropagation();
+
+            addform.show();
+        })
+        $(document).click(function(e){
+            alladdform.hide();
+        })
+
+        addform.click(function(e){
+            e.stopPropagation();
+        });
     }
     addQuestion();
 }

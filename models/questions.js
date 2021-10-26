@@ -28,10 +28,7 @@ const quesstionSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    admin : {
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'Admin',
-    },
+    
     test : {
         type : mongoose.Schema.Types.ObjectId,
         ref : 'Test',

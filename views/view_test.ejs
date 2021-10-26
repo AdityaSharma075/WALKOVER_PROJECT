@@ -1,0 +1,19 @@
+
+<%for(question of questions){%>
+    <ol>
+        <li>
+            <h4><%=question.Question%></h4>
+            <ul>
+                <li><%=question.Option1%></li>
+                <li><%=question.Option2%></li>
+                <li><%=question.Option3%></li>
+                <li><%=question.Option4%></li>
+                <li> <h3>Answer</h3><%=question.Answer%></li>
+            </ul>
+        </li>
+    </ol>
+    
+    <br>
+    <br>
+
+<%}%>

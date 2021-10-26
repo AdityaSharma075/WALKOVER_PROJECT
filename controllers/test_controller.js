@@ -1,10 +1,11 @@
 const Admin = require('../models/admin');
 const Test = require('../models/test');
-const Question = require('../models/questions')
+const Question = require('../models/questions');
+const Student = require('../models/student');
 module.exports.home = async function(req,res){
     
     if(res.locals.admin){
-        let tests = await Test.find({})
+        let tests = await Test.find({admin : req.user.id})
         .sort(' -createdAt')
         .populate('admin')
 
@@ -50,7 +51,7 @@ module.exports.saveQuestion = async function(req,res){
             Option4 : req.body.Option4,
             Answer : req.body.Answer,
             test : req.body.test,
-            admin : req.user._id
+            
             
         })
         let test = await Test.findById(req.body.test);
@@ -70,6 +71,70 @@ module.exports.saveQuestion = async function(req,res){
     }
 }
 
-module.exports.saveTest = function(req,res){
-    res.redirect('/');
+
+
+module.exports.view = async function(req,res){
+    let questions = await Question.find({test : req.params.id});
+
+    res.render('view_test',{
+        
+        title : "",
+        questions : questions,
+    
+    })
+}
+
+module.exports.start = async function(req,res){
+    
+    // let questions = await Question.find({test : req.params.id});
+
+    res.render('start_exam',{
+        
+        title : "",
+        test_id : req.params.id 
+    
+    })
+}
+module.exports.startExam = async function(req,res){
+    let questions = await Question.find({test : req.params.id});
+    // let student = await Student.create({
+    //     name : req.body.name,
+    //     email : req.body.email
+    // });
+    res.render('exam',{
+        
+        title : "",
+        questions : questions 
+    
+    })
+}
+
+module.exports.Submit = async function(req, res){
+    console.log(req.body);
+    const keys = Object.keys(req.body);
+    
+    var score = 0;
+    keys.forEach(func);
+    
+
+     function func (key ,index , arr){
+         Question.findById(key , function(err,question){
+            if(question.Answer == req.body[keys[index]]){
+                score = parseInt(score + 1);
+                console.log('true' ,score);
+                
+            }
+            
+        });
+        
+    }
+    console.log('true' ,score);
+    if(req.xhr){
+        return res.status(200).json({
+            data: {
+                score : score
+            },
+            message: "otp send"
+        });
+    }
 }
