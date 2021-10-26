@@ -1,0 +1,20 @@
+
+<button id = "login-pass-btn">Login using password</button>
+<button id = "login-otp-btn">login using otp
+</button>
+
+<form action="/admin/sign-in" method="post" id = "pass-form">
+    <input type="email" name="username" required>
+    <input type="password" name="password" required>
+    <input type="submit" value="Login">
+</form>
+
+<form action="/admin/verify" method="post" id = "otp-form">
+    <input type="email" name="username" id = 'user' required>
+    <!-- <input type="password" name="password" value="***" hidden> -->
+    <% var send = false%>
+    <input type="button" id = "otp-btn" value="Send Otp"   >
+    
+
+<script src="/js/loginType.js"></script>
+<script src="/js/otp.js"></script>
