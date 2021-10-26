@@ -1,1 +1,36 @@
-this is going to be the create test section
+<form action="/test/create" method="post">
+    <textarea name="description" id="" cols="30" rows="3"></textarea>
+    <input type="hidden" name="admin" value="<%=locals.admin._id%>" >
+    <input type="submit" value="Create">
+</form>
+
+<div id="tests-list-container">
+    <ul>
+        <% for(test of tests){ %>
+            
+        <div id = "">
+            <h1><%=test.description%></h1>
+            <% if(test.questions.length === 0){ %>
+                <button id = "display-add-form-btn">Add Questions</button>
+                <form action="/test/create/save-test"  id = "add-form"  method="post">
+                    <textarea name="Question"  cols="30" rows="2" placeholder="Question" ></textarea>
+                    <input type="text" name="Option1" required placeholder="Option1">
+                    <input type="text" name="Option2" required placeholder="Option2">
+                    <input type="text" name="Option3" required placeholder="Option3">
+                    <input type="text" name="Option4" required placeholder="Option4">
+                    <input type="text" name="Answer" required placeholder="Answer">
+                    <input type="hidden" name = "test" value="<%= test._id %>" >
+                    <input type="button" id = "add-btn" value="Next">
+                    <input type="submit" value="Save">
+                </form>
+            <%}%>
+                
+            
+            
+        </div>
+            
+        <%} %>
+    </ul>
+</div>
+
+<script src="/js/AddQuestion.js"></script>

@@ -9,7 +9,13 @@ const adminSchema = new mongoose.Schema({
     password : {
         type :String,
         required : true 
-    }
+    },
+    tests : [
+        {
+            type : mongoose.Schema.ObjectId,
+            ref : 'Test'
+        }
+    ]
 },{
     timestamps : true
 })
