@@ -95,12 +95,8 @@ module.exports.start = async function(req,res){
     })
 }
 module.exports.startExam = async function(req,res){
-    function generateRandomInteger() {
-        return Math.floor(Math.random() * 5) + 1;
-    }
-    let x = generateRandomInteger();
-    console.log('This x' ,x)
-    let questions = await Question.find({test : req.params.id}).limit(5).skip(x);
+    
+    let questions = await Question.find({test : req.params.id})
     // let student = await Student.create({
     //     name : req.body.name,
     //     email : req.body.email
