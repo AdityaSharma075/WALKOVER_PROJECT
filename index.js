@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 //encoding the url
 app.use(express.urlencoded());
 app.use(cookieParser());
