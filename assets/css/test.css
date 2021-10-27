@@ -49,9 +49,7 @@ a{
 
 @media screen and (max-width: 600px) {
     #test-container{
-         
         flex-direction: column;
-        
     }
     #form-container{
         margin: 10px;
