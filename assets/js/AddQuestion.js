@@ -4,7 +4,9 @@
         let alladdform = $('*#add-form');
         alladdform.hide();
         let btn = $("#add-btn");
+        $('*#display-add-form-btn').hide();
         let addbtn = $('#display-add-form-btn');
+        addbtn.show();
         btn.click(function(e){
             e.preventDefault();
 
