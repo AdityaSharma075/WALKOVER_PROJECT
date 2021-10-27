@@ -21,13 +21,17 @@ body{
 }
 #login-type{
     position: relative;
-    margin: 15%;
+    margin: 15px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     
     text-align: center;
     /* background-color: black; */
+}
+#login-type button{
+    margin: 15px;
+    padding: 20px;
 }
 
 #login-form{
