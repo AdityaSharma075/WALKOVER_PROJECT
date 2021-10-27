@@ -109,32 +109,36 @@ module.exports.startExam = async function(req,res){
     })
 }
 
-module.exports.Submit = async function(req, res){
+module.exports.Submit =  function(req, res){
     console.log(req.body);
     const keys = Object.keys(req.body);
     
-    var score = 0;
-    keys.forEach(func);
+    let score = 0;
+        for(let i =0;i<keys.length ;i++){
+            let key = keys[i];
+            Question.findById(key ,function(err,question){
+                if(question.Answer == req.body[keys[i]]){
+                    score = parseInt(score + 1);
+                    if(i === (keys.length-1)){
+                        // console.log("Score is score" , score)
+                       resolve();
+                    }
+                    // console.log('true in' ,score);                
+                }
+             })
+             
+        }
+    function resolve(){
+        console.log('true out' ,score);
+        if(req.xhr){
+            return res.status(200).json({
+                data: {
+                    score : score
+                },
+                message: "otp send"
+            });
+        }
+    }
     
-
-     function func (key ,index , arr){
-         Question.findById(key , function(err,question){
-            if(question.Answer == req.body[keys[index]]){
-                score = parseInt(score + 1);
-                console.log('true' ,score);
-                
-            }
-            
-        });
-        
-    }
-    console.log('true' ,score);
-    if(req.xhr){
-        return res.status(200).json({
-            data: {
-                score : score
-            },
-            message: "otp send"
-        });
-    }
+    
 }

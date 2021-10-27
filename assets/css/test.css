@@ -1,0 +1,65 @@
+body{
+    background-color: #f6ede8;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+    font-family:  apercu-pro,sans-serif !important;
+    
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+#test-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+#form-container{
+    margin-top: 5vh;
+    border: 1px solid black;
+    background-color: white;
+    /* position: relative; */
+    height: fit-content;
+    box-shadow: 0px 0px 6px 8px gray;
+}
+#form-container form input{
+  margin: 5px;
+}
+
+#tests-list-container{
+    
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 6px 8px gray;
+}
+#tests-list-container>h1{
+    text-align: center;
+}
+#add-form textarea{
+    resize: none;
+
+}
+#add-form input{
+    margin: 5px;
+
+}
+
+@media screen and (max-width: 600px) {
+    #test-container{
+         
+        flex-direction: column;
+        
+    }
+    #form-container{
+        margin: 10px;
+    }
+    #tests-list-container{
+    
+        margin: 10px;
+        margin-top: 50px;
+        overflow: auto;
+    }
+}

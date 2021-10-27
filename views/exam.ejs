@@ -1,31 +1,46 @@
+<link rel="stylesheet" href="/css/exam.css">
 <div id = "exam-container">
-
-
-<form action="/test/submit" id = "exam-form"method="post">
-    <ol type="1">
-<%for(question of questions){%>
-    
-        <li>
-            <spam><%=question.Question%></span><br><br>
-            <input type="radio" id="option1" name="<%=question.id%>" value="<%=question.Option1%>">
-            <label for="option1"><%=question.Option1%></label><br>
-            <input type="radio" id="option2" name="<%=question.id%>" value="<%=question.Option2%>">
-            <label for="option2"><%=question.Option2%></label><br>
-            <input type="radio" id="option3" name="<%=question.id%>" value="<%=question.Option3%>">
-            <label for="option3"><%=question.Option3%></label><br>
-            <input type="radio" id="option4" name="<%=question.id%>" value="<%=question.Option4%>">
-            <label for="option4"><%=question.Option4%></label>        
-            
-        </li>
-
+    <form action="/test/submit" id = "exam-form"method="post">
+        <input type="button" id = "submit-btn" class = "btn btn-primary" value="Submit">
         <br>
-
-    
-    
-<%}%>
-</ol>
-<input type="button" id = "submit-btn" value="Submit">
-</form>
+        <ol type="1">
+            <%
+                function shuffle(array) {
+                    let currentIndex = array.length,  randomIndex;
+                
+                    // While there remain elements to shuffle...
+                    while (currentIndex != 0) {
+                
+                    // Pick a remaining element...
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex--;
+                
+                    // And swap it with the current element.
+                    [array[currentIndex], array[randomIndex]] = [
+                        array[randomIndex], array[currentIndex]];
+                    }
+                
+                    return array;
+                }
+                shuffle(questions);
+            %>
+            <%for(question of questions){%>
+                <li>
+                    <spam><%=question.Question%></span><br><br>
+                    <input type="radio" id="option1" name="<%=question.id%>" value="<%=question.Option1%>">
+                    <label for="option1"><%=question.Option1%></label><br>
+                    <input type="radio" id="option2" name="<%=question.id%>" value="<%=question.Option2%>">
+                    <label for="option2"><%=question.Option2%></label><br>
+                    <input type="radio" id="option3" name="<%=question.id%>" value="<%=question.Option3%>">
+                    <label for="option3"><%=question.Option3%></label><br>
+                    <input type="radio" id="option4" name="<%=question.id%>" value="<%=question.Option4%>">
+                    <label for="option4"><%=question.Option4%></label>   
+                </li>
+                <br>
+            <%}%>
+        </ol>
+        
+    </form>
 </div>
 
 <script src="/js/result.js"></script>

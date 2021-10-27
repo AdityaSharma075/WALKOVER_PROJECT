@@ -1,20 +1,36 @@
+<link rel="stylesheet" href="/css/admin.css">
 
-<button id = "login-pass-btn">Login using password</button>
-<button id = "login-otp-btn">login using otp
-</button>
+<div id = "login-container">
+    <div id = "heading">
+        
+            <h1> <i class="fas fa-sign-in-alt"></i>  Login</h1>
+        
+        
 
-<form action="/admin/sign-in" method="post" id = "pass-form">
-    <input type="email" name="username" required>
-    <input type="password" name="password" required>
-    <input type="submit" value="Login">
-</form>
-
-<form action="/admin/verify" method="post" id = "otp-form">
-    <input type="email" name="username" id = 'user' required>
-    <!-- <input type="password" name="password" value="***" hidden> -->
-    <% var send = false%>
-    <input type="button" id = "otp-btn" value="Send Otp"   >
+    </div>
     
+    <div id = "login-type">
+        <button type="button" class="btn btn-secondary" id = "login-pass-btn">Login using password</button>
+        <button type="button" class="btn btn-secondary" id = "login-otp-btn">login using otp</button>
+    </div>
+
+    <div id = "login-form" >
+        <form action="/admin/sign-in" method="post" id = "pass-form">
+            <input type="email" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder = "Password" required>
+            <input type="submit" class="btn btn-primary" value="Login">
+        </form>
+    </div>
+
+
+    <div id="login-form">
+        <form action="/admin/verify" method="post" id = "otp-form">
+            <input type="email" name="username" id = 'user' required placeholder="Email">
+            
+            <input type="button" class="btn btn-primary" id = "otp-btn" value="Send Otp"    >
+        </form>
+    </div>
+</div>
 
 <script src="/js/loginType.js"></script>
 <script src="/js/otp.js"></script>

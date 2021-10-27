@@ -1,0 +1,12 @@
+#exam-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
+}
+
+#exam-form ol li{
+    background-color: gainsboro;
+    margin: 10px;
+    padding: 20px;
+}

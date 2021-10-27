@@ -13,7 +13,7 @@
                     username : $('#user').val()
                 },
                 success : function(data){
-                    $('#otp-form').prepend('<input type = "text" name = "password"  required></input> <input type = "submit" value = "Login"></input>')
+                    $('#otp-form').prepend('<label for="otp-btn">Enter Otp</label><input type = "text" name = "password" placeholder = "Enter Otp" required></input> <input type = "submit" class = "btn btn-primary" value = "Login"></input>')
                    
 
                     $('#otp-btn').remove();

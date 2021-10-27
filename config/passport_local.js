@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-
+const crypto = require('crypto');
 const Admin = require('../models/admin');
 
 
@@ -21,11 +21,21 @@ passport.use('local', new LocalStrategy(
 
 passport.use( 'otp' , new LocalStrategy(
     function( username , password , done){
-        console.log('i am here')
         Admin.findOne({username : username} , function(err , user){
             if(err){console.log('Error in finding the User Passport->Local');return(done(err))}
+            if(user){
+                return done(null , user);
+            }else{
+                Admin.create({
+                    username : username,
+                    password : crypto.randomBytes(20).toString('hex')
+                },function(err,user){
+                    if(err){console.log('Error in finding the User Passport->Local');return(done(err))}
+
+                    return done(null , user);
+                })
+            }
             
-            return done(null , user);
         });
 
     }

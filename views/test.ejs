@@ -1,39 +1,47 @@
-<form action="/test/create" method="post">
-    <textarea name="description" id="" cols="30" rows="3"></textarea>
-    <input type="hidden" name="admin" value="<%=locals.admin._id%>" >
-    <input type="submit" value="Create">
-</form>
-
-<div id="tests-list-container">
-    <ul>
-        <% for(test of tests){ %>
-            
-        <div id = "">
-            <h1> <a href="/test/view/<%= test._id %>"> <%=test.description%></a> </h1>
-            <button id = "display-add-form-btn">Add Questions</button>
-            <p>
-                Test link is : 'localhost:8000/test/start/<%= test._id %>'
-            </p>
-            
-                <form action="/test/create/save-test"  id = "add-form"  method="post">
-                    <textarea name="Question"  cols="30" rows="2" placeholder="Question" ></textarea>
-                    <input type="text" name="Option1" required placeholder="Option1">
-                    <input type="text" name="Option2" required placeholder="Option2">
-                    <input type="text" name="Option3" required placeholder="Option3">
-                    <input type="text" name="Option4" required placeholder="Option4">
-                    <input type="text" name="Answer" required placeholder="Answer">
-                    <input type="hidden" name = "test" value="<%= test._id %>" >
-                    <input type="button" id = "add-btn" value="Next">
-                    <a href="/test">save</a>
-                </form>
-            
-                
-            
-            
+<link rel="stylesheet" href="/css/test.css">
+<div id = "test-container">
+    <div id = "form-container">
+        <h1>Create Test</h1>
+        <form action="/test/create" id = "quiz-form" method="post">
+            <input name="description" id="" type="text" placeholder="Test Name"></textarea>
+            <input type="hidden" name="admin" value="<%=locals.admin._id%>" >
+            <br>
+            <input type="submit" class="btn btn-primary" value="Create Test">
+        </form>
+    </div>
+    
+    <%if(tests.length != 0){%>
+        <div id="tests-list-container">
+            <h1>Your Tests</h1>
+            <ol>
+                <% for(test of tests){ %>
+            <li>
+                <div id = "">
+                    <h1> <a href="/test/view/<%= test._id %>"> <%=test.description%></a> </h1>
+                    <button id = "display-add-form-btn" class="btn btn-primary">Add Questions</button>
+                    <p>
+                        Test link is : 'localhost:8000/test/start/<%= test._id %>'
+                    </p>
+                    
+                        <form action="/test/create/save-test"  id = "add-form"  method="post">
+                            <textarea name="Question"  cols="30" rows="3" placeholder="Question" ></textarea><br>
+                            <input type="text" name="Option1" required placeholder="Option1"><br>
+                            <input type="text" name="Option2" required placeholder="Option2"><br>
+                            <input type="text" name="Option3" required placeholder="Option3"><br>
+                            <input type="text" name="Option4" required placeholder="Option4"><br>
+                            <input type="text" name="Answer" required placeholder="Answer"><br>
+                            <input type="hidden" name = "test" value="<%= test._id %>" >
+                            <input type="button" id = "add-btn" class="btn btn-primary" value="Next">
+                            <a href="/test"  class="btn btn-dark">save</a>
+                        </form>
+                </div>
+            </li>
+                <%} %>
+        </ol>
         </div>
-            
-        <%} %>
-    </ul>
+    <%}%>
+    
 </div>
+
 
 <script src="/js/AddQuestion.js"></script>

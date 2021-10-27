@@ -1,0 +1,42 @@
+body{
+    background-color: #f6ede8;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+div{
+    font-family:  apercu-pro,sans-serif !important;
+}
+
+#main-content {
+    width: 60vw;
+    margin-left: 20vw;
+    margin-top: 10vh;
+    text-align: center;
+    
+}
+#main-content h1{
+    line-height: 76px; 
+    text-align: center; 
+    font-weight: 500;
+}
+#main-content h1 span{
+    color: rgb(19, 19, 19); font-size: 64px; background-color: rgba(255, 255, 255, 0);
+}
+#main-content >p {
+    margin-top: 10vh;
+    
+}
+#create-link{
+    text-decoration: none;
+}
+@media screen and (max-width: 600px) {
+    #main-content h1{
+        line-height: 30px;
+        text-align: center; 
+        font-weight: 500;
+    }
+    #main-content h1 span{
+        color: rgb(19, 19, 19); 
+        font-size: 25px; background-color: rgba(255, 255, 255, 0);
+    }
+  }
