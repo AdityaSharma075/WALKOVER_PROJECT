@@ -12,7 +12,7 @@ module.exports.home = async function(req,res){
         
 
         res.render('test' , {
-            title : "",
+            title : "Quizo : Tests",
             tests : tests,
         });
     }else{
@@ -37,9 +37,8 @@ module.exports.create = async function(req,res){
         
     }
 }
-module.exports.question =  function(req,res){
-    return res.render('test_questions')
-}
+
+
 module.exports.saveQuestion = async function(req,res){
     try {
         
@@ -78,7 +77,7 @@ module.exports.view = async function(req,res){
 
     res.render('view_test',{
         
-        title : "",
+        title : "Quizo : Questions ",
         questions : questions,
     
     })
@@ -90,7 +89,7 @@ module.exports.start = async function(req,res){
 
     res.render('start_exam',{
         
-        title : "",
+        title : "Quizo : Start Exam",
         test_id : req.params.id 
     
     })
@@ -103,14 +102,14 @@ module.exports.startExam = async function(req,res){
     // });
     res.render('exam',{
         
-        title : "",
+        title : "Quizo : Exam",
         questions : questions 
     
     })
 }
 
 module.exports.Submit =  function(req, res){
-    console.log(req.body);
+    // console.log(req.body);
     const keys = Object.keys(req.body);
     
     let score = 0;
@@ -129,7 +128,7 @@ module.exports.Submit =  function(req, res){
              
         }
     function resolve(){
-        console.log('true out' ,score);
+        // console.log('true out' ,score);
         if(req.xhr){
             return res.status(200).json({
                 data: {

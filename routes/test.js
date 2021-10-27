@@ -9,7 +9,7 @@ router.get('/start/:id',testController.start);
 router.get('/start-exam/:id' , testController.startExam)
 router.post('/submit' , testController.Submit)
 router.post('/create' , passport.checkAuthentication,testController.create)
-router.get('/create/add-question' ,passport.checkAuthentication, testController.question)
+
 router.post('/create/save-question' ,passport.checkAuthentication, testController.saveQuestion);
 // router.post('/create/save-test' ,passport.checkAuthentication,testController.saveTest )
 
